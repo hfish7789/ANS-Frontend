@@ -1,0 +1,377 @@
+{
+  "address": {
+    "snowtraceButton": "Посмотреть на Snowtrace",
+    "filter": {
+      "controller": "Контроллер",
+      "registrant": "Регистратор"
+    },
+    "namesExpiringSoonBanner": {
+      "text": "Продлите все имена одной транзакцией - выберите несколько имён и нажмите \"Продлить\"",
+      "title": "Срок действия одного или более имён скоро истекает"
+    },
+    "renew": {
+      "button": "Продлить выбранные",
+      "confirm": [
+        "Следующие имена:",
+        "будут продлены за"
+      ],
+      "confirmButton": "Продлить",
+      "year_0": "{{count}} years",
+      "year_1": "{{count}} years",
+      "year_2": "{{count}} years"
+    },
+    "sort": {
+      "alphabetical": "Алфавитный",
+      "expiry": "Срок действия"
+    },
+    "transactionBanner": "You are here because of a transaction we sent you or a referral from another site. You have names below that need to be renewed soon!"
+  },
+  "blockies": {
+    "noAddressFound": "No address found"
+  },
+  "c": {
+    "Address": "Адрес",
+    "Content": "Содержимое",
+    "Controller": "Контроллер",
+    "Expiration Date": "Срок действия",
+    "Resolver": "Резолвер",
+    "about": "О",
+    "addresses": "Addresses",
+    "cancel": "Отменить",
+    "cannotclaimDns": "You cannot claim names under .{{ name }} on this site.",
+    "claim": "Заявить",
+    "connect": "Connect",
+    "disconnect": "Disconnect",
+    "edit": "Редактировать",
+    "email": "Электронный почта",
+    "expires": "Истекает",
+    "faq": "FAQ",
+    "favourites": "Избранное",
+    "learnmore": "Узнать больше",
+    "learnmoreenglishonly": "Learn More",
+    "migrate": "Мигрировать",
+    "mynames": "Мои Имена",
+    "network": "сеть",
+    "otheraddresses": "Другие Адреса",
+    "parent": "родитель",
+    "readonly": "Read only",
+    "refresh": "Обновить",
+    "register": "Зарегистрировать",
+    "registrant": "Получатель",
+    "registrationDate": "Дата Регистрации",
+    "renew": "Продлить",
+    "return": "Return",
+    "save": "Сохранить",
+    "search": "Поиск",
+    "set": "Установить",
+    "sync": "Синхронизировать",
+    "textrecord": "Текстовая Запись",
+    "transfer": "Перенести",
+    "warning": "Предупреждение",
+    "year_0": "years",
+    "year_1": "years",
+    "year_2": "years"
+  },
+  "certificate": {
+    "button": "Request SSL certificate",
+    "warning": "SSL certificate for {{ name }}.link is not created yet"
+  },
+  "childDomainItem": {
+    "notmigrated": "не перенесён"
+  },
+  "dns": {
+    "breadcrumbs": [
+      "ВКЛЮЧИТЬ DNSSEC",
+      "ДОБАВИТЬ ТЕКСТ",
+      "ОТПРАВИТЬ ПОДТВЕРЖДЕНИЕ",
+      "УПРАВЛЯТЬ ИМЕНЕМ"
+    ],
+    "dnsowner": "Владелец DNS",
+    "steps": {
+      "addtext": {
+        "text": "Нажмите 'Узнать больше' чтобы прочесть о данном процессе.",
+        "title": "Добавьте текстовую запись у регистратора вашего домена и затем нажминте 'Обновить'. Текстовая запись должна содержать ваш Avalanche адрес в следующем виде:"
+      },
+      "enable": {
+        "text": "Нажмите 'узнать больше' чтоб прочесть о процедуре.",
+        "title": "Посетите регистратора вашего домена чтобы включить DNSSEC. Когда это будет сделано, нажмите 'обновить', чтобы увидеть можно ли перейти к следующему шагу."
+      },
+      "manage": {
+        "text1": "Поскольку вы являетесь владельцем, вы можете сейчас управлять именем.",
+        "text2": "Поскольку вы не являетесь владельцем, вы можете только просматривать данные об имени в менеджере.",
+        "title": "Поздравляем! Вы успешно внесли этот DNS домен в ANS реестр."
+      },
+      "proof": {
+        "text1": "Адрес в DNS текстовой записи является вашим адресом.",
+        "text2": "Если вы знаете, что являетесь владельцем этого домена, то добавьте к его TXT записи ваш Avalanche адрес и обновите эту страницу чтобы произвести проверку DNSSEC ещё раз.",
+        "title1": "Вы владелец этого адреса. Добавьте сейчас ваш домен к Реестру ANS.",
+        "title2": "Похоже, что вы не являетесь владельцем DNS этого домена, но любой человек может добавить этот домен в ANS Реестр."
+      }
+    },
+    "viewinmanager": "Просмотреть в Менеджере"
+  },
+  "expiryNotification": {
+    "placeholder": "Введите email адрес",
+    "reminder": "Напомнить мне"
+  },
+  "favourites": {
+    "favouriteTitle": "Избранное",
+    "nofavouritesDomains": {
+      "text": "Чтобы добавить имена в Избранное, нажмите на иконку 'сердца' возле желаемого имени.",
+      "title": "Имена не были сохранены."
+    },
+    "nofavouritesSubdomains": {
+      "text": "Чтобы добавить имена в Избранное, нажмите на иконку 'сердца' возле желаемого имени.",
+      "title": "No Subdomains have been saved."
+    },
+    "subdomainFavouriteTitle": "Избранные Поддомены"
+  },
+  "home": {
+    "announcements": {
+    },
+    "howtouse": {
+      "body": "Приложение ANS App является графическим интерфейсом пользователя для обычных пользователей. Оно позволяет вам найти любое имя, управлять его адресом или тем, куда он направляет и создавать поддомены для каждого из имён.",
+      "title": "Как пользоваться ANS"
+    },
+    "whatisens": {
+      "body": "Avalanche Name Service является распределённой, открытой и исчерпывающий системой имён на блокчейне Avalanche. ANS устраняет необходимость копировать или набирать длинные адреса.",
+      "title": "Что это"
+    }
+  },
+  "howtouse": {
+    "favourite": {
+      "text": "Следите за доменами и поддоменами, которыми вы владеете или за которыми ходите наблюдать.",
+      "title": "Сохранить избранные имена"
+    },
+    "manage": {
+      "text": "Направляйте домены к вашему ethereum адресу, передавайте владение доменом другим людям и многое другое.",
+      "title": "Управлять именами"
+    },
+    "register": {
+      "text": "Зарегистрируйте имя .eth за $5/год. Продляйте или отмените регистрацию в любое время.",
+      "title": "Зарегистрировать имена"
+    },
+    "search": {
+      "text": "Найдите домены и поддомены, которые вы можете зарегистрировать или узнайте больше.",
+      "title": "Искать имена"
+    }
+  },
+  "linegraph": {
+    "daysRemaining": "{{daysRemaining}} (out of {{totalDays}}) days remaining",
+    "endPrice": "End price",
+    "startingPrice": "Starting price",
+    "title": "Buy now for {{premiumInEth}}"
+  },
+  "pendingTx": {
+    "text": "TX в ожидании"
+  },
+  "pricer": {
+    "gasDescription": "Estimated Gas Price (Step 1 + Step 3). The gas price will flucuate.",
+    "pricePerAmount": "Price per amount of time selected",
+    "registrationPeriodLabel": "Срок регистрации",
+    "registrationPriceLabel": "Registration price to pay",
+    "totalDescription": "Estimated Total (Price + Gas). The gas price is based at {{gasPriceToGweiFast}} Gwei",
+    "totalPriceLabel": "Общие сумма к оплате",
+    "yearUnit": "год"
+  },
+  "register": {
+    "buttons": {
+      "insufficient": "Insufficient balance on your wallet. Fill in your wallet and reload the page.",
+      "manage": "Управлять",
+      "register": "Зарегистрировать",
+      "request": "Запрос на регистрацию",
+      "setreverserecord": "Set reverse record",
+      "warning": "Нажмите 'зарегистрировать' чтобы перейти 3-му шагу."
+    },
+    "favourite": "Добавьте имя в 'Избранное' для быстрого доступа в случае если вы закроете браузер.",
+    "increaseRegistrationPeriod": "Increase registration period to avoid paying gas every year",
+    "notifications": {
+      "ready": "Готово к регистрации"
+    },
+    "notify": "Сообщить мне",
+    "premium": {
+      "dateDescription": "Date and time shown in local time zone",
+      "invalid": "Any number over 2k is invalid",
+      "title": "Premium"
+    },
+    "premiumWarning": {
+      "description": "To ensure everyone has a fair opportunity to register a newly expired name, these names have a premium that starts at $2,000 and reduces over 28 days until the premium is gone. Enter the amount you're willing to pay as a premium to learn which date to revisit the app to register the name.",
+      "title": "This name has a temporary premium."
+    },
+    "step1": {
+      "label": "Шаг 1",
+      "text": "Ваш кошелёк откроется и вас попросят подтвердить первые две транзакции, необходимые для регистрации.",
+      "text2": "If the second transaction is not processed within 7 days of the first, you will need to start again from step 1.",
+      "title": "Запрос на регистрацию"
+    },
+    "step2": {
+      "label": "Шаг 2",
+      "text": "Период ожидания необходим в случае, если другой человек попытался зарегистрировать это же имя и для вашей защиты, после вашего запроса.",
+      "title": "Ожидайте 1 минуту"
+    },
+    "step3": {
+      "label": "Шаг 3",
+      "text": "Нажмите 'зарегистрировать' и ваш кошелек заново откроется. Только после подтверждения второй транзакции вы узнаете получили ли вы данный домен.",
+      "title": "Регистрация завершена"
+    },
+    "titles": [
+      "Для регистрации имени необходимо пройти все 3 шага",
+      "Скоро вы сможете управлять своим именем.",
+      "Вы прошли все шаги регистрации и теперь можете начать управлять вашим именем!"
+    ]
+  },
+  "registrymigration": {
+    "donotaccept": "*Если вы занимаетесь торговлей ANS именами, не принимайте данное имя!",
+    "messages": {
+      "controller": "Это имя контролируется контрактом и не может быть мигрировано автоматически. Пожалуйста, перезапустите ваш контракт для использования с новым реестром перед тем как установите контроллер.",
+      "default": "Это имя должно быть перенесено в новый Реестр. Только родитель данного имени ({{ parent}}) может это сделать",
+      "dnssec": "Это имя должно быть перенесено в новый Реестр. Пожалуйста, правильно установите владельца DNS и нажмите ниже кнопку 'Sync'",
+      "parentmigrate": "Сначала вам необходимо перенести домен-родитель ({{ parent}})  до того, как вы сможете мигрировать этот поддомен."
+    }
+  },
+  "reminder": {
+    "everywhere": "everywhere",
+    "release": {
+      "description": "Register {{name}} at https://app.avaxns.domains/name/{{name}}/register",
+      "title": "Register {{name}}"
+    },
+    "renewal": {
+      "description": "Your ANS name is expiring soon, please renew it",
+      "title": "Renew your ANS domain {{name}}"
+    }
+  },
+  "search": {
+    "button": "Поиск",
+    "placeholder": "Искать имена или адреса"
+  },
+  "searchErrors": {
+    "domainMalformed": {
+      "long": "You have either added a domain without a TLD such as .eth or you have added unsupported characters.",
+      "short": "Domain malformed. {{searchTerm}} is not a valid domain."
+    },
+    "tooShort": {
+      "long": "Names less than 6 characters have been reserved for when the permanent registrar has been released.",
+      "short1": "Name is too short.",
+      "short2": "Names must be at least 3 characters long"
+    },
+    "unsupported": {
+      "long": "We do not support every single domain. Support for future domains are planned in the future",
+      "short": "{{tld}} is not currently a supported TLD."
+    }
+  },
+  "singleName": {
+    "confirm": {
+      "button": {
+        "cancel": "Отменить",
+        "confirm": "Подтвердить"
+      },
+      "subTitle": "Это действие изменет записи в блокчейне.",
+      "title": "Вы уверены что хотите это сделать?",
+      "value": {
+        "future": "БУДУЩЕЕ",
+        "previous": "ПРЕДЫДУЩЕЕ"
+      }
+    },
+    "dns": {
+      "messages": {
+        "error": "Исправте ошибку в вашем регистраторе домена. Обновите чтобы внести изменения.",
+        "outOfSync": "Контроллер и владелец DNS не синхронизированы. Нажмите 'синхронизировать' чтобы сделать владельца DNS Контроллером. Нажмите 'Обновить' если вы вносите поправки к домену в Регистраторе DNS.",
+        "readyToRegister": "Нажмите 'Обновить' если вы вносите поправки к домену в Регистраторе DNS."
+      }
+    },
+    "domain": {
+      "state": {
+        "auction": "На аукционе",
+        "available": "Available",
+        "default": "Неизвестный статус",
+        "owned": "Недоступен",
+        "owner": "Владелец"
+      }
+    },
+    "expiry": {
+      "cannotown": "Продление имени, владельцем которого вы не являетесь, не даёт вам право владения им.",
+      "expired": "Срок действия истёк",
+      "expiring": "Срок действия скоро истекает",
+      "gracePeriodEnds": "Льготный период заканчивается",
+      "isUnderPremiumSale": "Available with a temporary premium"
+    },
+    "learnmore": {
+      "step1": {
+        "text": "Once you register your name, Go to 'My Account' page and set a reverse record. This allows dapps to find and display your ANS name when you connect to them with your Avalanche account. ",
+        "title": "1. Set a reverse record"
+      },
+      "step2": {
+        "text": "You can set the addresses of many different cryptocurrencies, profile information such as an avatar, Twitter handle, and more",
+        "title": "2. Set other records"
+      },
+      "step3": {
+        "text": "You can host your static html/css/images on IPFS and put the hash in your ANS name's Content record. Then it can be resolved by ANS-aware browsers (e.g. Opera), browser extensions (Metamask), or any browser with '.link' appended to the end (e.g. ens.eth.link).",
+        "title": "3. Set a content hash of a decentralized website"
+      },
+      "title": "Learn how to manage your name."
+    },
+    "messages": {
+      "alreadyregistered": "Имя уже зарегистрирован",
+      "noowner": "Не владелец",
+      "noresolver": "Резолвер не установлен",
+      "notfinalised": "(You have not finalised)",
+      "pending": "В ожидании"
+    },
+    "record": {
+      "cantEdit": "Вы не можете изменить или добавить запись до тех пор, пока вы не мигрируете на новый ресолвер.",
+      "closeEdit": "Close Add/Edit Records",
+      "messages": {
+        "explanation": "Обратная Резолюция преобразовывает адрес в имя. Это позволяет Dapps показывать в их интерфейсах '{{имя}}' вместо длинного адреса '{{аккаунт}}'. Если вы хотите установить преобразование для другого аккаунта, пожалуйста, переключитите аккаунты в браузере dapp.",
+        "explanation2": "You can only select names you set this Avalanche Address as.",
+        "noForwardRecordAavilable": "You either do not own any ANS names, or your ANS names have no AVAX records set to this address.",
+        "notSet": "Обратная запись: не установлена",
+        "reverseRecordRemoval": "Are you sure you want to delete the reverse record?",
+        "selectPlaceholder": "Select your ANS name",
+        "setTo": "Обратная запись: Установлена на",
+        "setToDifferent": "Обратная запись: Установлена на другое имя:"
+      },
+      "openEdit": "Add/Edit Records",
+      "title": "Записи"
+    },
+    "resolver": {
+      "error": "Ошибка Мигрирования Ресолвера",
+      "message": "Чтобы сбросить ваше ресолвер вручную, нажмите установить и введите адрес вашего ресолвера.",
+      "placeholder": "Use the Public Resolver or enter the address of your custom resolver contract",
+      "publicResolver": "Использовать Публичный Ресолвер",
+      "resolverAddressWarning": "Only contract address is allowed",
+      "warning": "Вы используете устаревшую версию публичного ресолвера. Нажмите, чтобы перенести ваш ресолвер и записи. Вам будет необходимо подвердить две транзакции для переноса ваших записей и ресолвера."
+    },
+    "search": {
+      "title": "Имена"
+    },
+    "subdomains": {
+      "add": "Добавить поддомен",
+      "nosubdomains": "Поддомены не были добавлены"
+    },
+    "tabs": {
+      "details": "Подробности",
+      "register": "Зарегистрировать",
+      "subdomains": "Поддомены"
+    },
+    "test": {
+      "note": "Примечание: домен .test позволяет каждому желающему запросить имя для тестовых целей, срок действия которого истечёт через 28 дней."
+    },
+    "tooltips": {
+      "detailsItem": {
+        "Controller": "Вы можете перенести контроллер только если вы регистратор или контроллер и вы залогинены в ваш кошелек.",
+        "ControllerAndDnsAlreadySync": "Контроллер и владелец DNS уже синхронизированы.",
+        "Resolver": "Вы можете установить резолвер только если вы контроллер и вы залогинены в ваш кошелек.",
+        "default": "Вы можете вносить изменения только если вы контроллер и залогинены в ваш кошелек.",
+        "registrant": "Вы можете перенести регистратор только если вы сами являетесь регистратором и залогинены в ваш кошелек.",
+        "registrantExpired": "Вы не можете перенести этот домен пока он просрочен. Пожалуйста, сначала обновите его."
+      }
+    }
+  },
+  "warnings": {
+    "homoglyph": {
+      "content": "This name contains non-ASCII characters. Please be aware that there are characters that look identical or very similar to English letters, especially characters from Cyrillic and Greek. Also, traditional Chinese characters can look identical or very similar to simplified variants. For more information, please see this",
+      "link": "Wikipedia article",
+      "title": "ATTENTION"
+    }
+  }
+}

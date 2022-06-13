@@ -1,0 +1,347 @@
+import React, { useState, useEffect } from 'react'
+import _ from 'lodash'
+import { useQuery, useMutation } from '@apollo/client'
+import styled from '@emotion/styled/macro'
+import { useTranslation, Trans } from 'react-i18next'
+
+import { emptyAddress, hasValidReverseRecord } from '../utils/utils'
+
+import { SET_NAME } from 'graphql/mutations'
+import mq from 'mediaQuery'
+import { useEditable } from './hooks'
+
+import {
+  GET_REVERSE_RECORD,
+  GET_ETH_RECORD_AVAILABLE_NAMES_FROM_SUBGRAPH
+} from 'graphql/queries'
+
+import SaveCancel from './SingleName/SaveCancel'
+import PendingTx from './PendingTx'
+
+import { ReactComponent as DefaultCheck } from './Icons/Check.svg'
+import subjectIcon from '../assets/Group 2925.png'
+import RotatingSmallCaret from './Icons/RotatingSmallCaret'
+import { decryptName, checkIsDecrypted } from '../api/labels'
+import Select from 'react-select'
+import Modal from './Modal/Modal'
+import Bin from '../components/Forms/Bin'
+import Gap from '../components/Utils/Gap'
+import gql from 'graphql-tag'
+import '../App.css'
+
+import {
+  Paper,
+  Stack,
+  Typography,
+  Divider
+} from '@mui/material'
+
+const Loading = styled('span')`
+  color: #adbbcd;
+`
+
+const Warning = styled('div')`
+  color: #f5a623;
+`
+
+const SetReverseContainer = styled('div')`
+  margin-top: 24px;
+`
+
+const Message = styled('div')`
+  font-family: Overpass Mono;
+  font-weight: 700;
+  font-size: 14px;
+  color: #adbbcd;
+  letter-spacing: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &:hover {
+    cursor: pointer;
+  }
+`
+
+const ReadOnlyMessage = styled(Message)`
+  &:hover {
+    cursor: default;
+  }
+`
+
+const MessageContent = styled('div')`
+  display: flex;
+  align-items: center;
+`
+
+const IconStyles = () => `margin-right: 10px;
+  flex-shrink: 0;
+`
+
+const Check = styled(DefaultCheck)`
+  ${IconStyles()};
+`
+
+const Explanation = styled('div')`
+  font-weight: 400;
+  font-size: 18px;
+  color: #000000;
+  line-height: 160%;
+  margin-bottom: 24px;
+  max-width: 975px;
+  hyphens: auto;
+  opacity: 0.7;
+`
+
+const EditableNotSet = styled('div')`
+  color: #282929;
+`
+
+const ButtonsContainer = styled('div')`
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+`
+
+export const SINGLE_NAME = gql`
+  query singleNameQuery @client {
+    isENSReady
+    networkId
+  }
+`
+
+function AddReverseRecord({ account, currentAddress }) {
+  const { t } = useTranslation()
+  const { state, actions } = useEditable()
+  const [newName, setNewName] = useState('')
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
+
+  const { editing, txHash, pending, confirmed } = state
+
+  const { startEditing, stopEditing, startPending, setConfirmed } = actions
+  let options
+
+  const { data: { getReverseRecord } = {}, loading, refetch } = useQuery(
+    GET_REVERSE_RECORD,
+    {
+      variables: {
+        address: currentAddress
+      },
+      skip: !currentAddress,
+      fetchPolicy: 'no-cache'
+    }
+  )
+
+  const [setName] = useMutation(SET_NAME, {
+    onCompleted: data => {
+      startPending(Object.values(data)[0])
+    }
+  })
+
+  useEffect(() => {
+    startEditing()
+  }, [getReverseRecord, account])
+
+  const {
+    data: { networkId }
+  } = useQuery(SINGLE_NAME)
+
+  console.log('networkId: ', networkId)
+
+  const { data: { domains } = {}, refetch: refetchNames } = useQuery(
+    GET_ETH_RECORD_AVAILABLE_NAMES_FROM_SUBGRAPH,
+    {
+      variables: {
+        address: currentAddress
+      },
+      fetchPolicy: 'no-cache',
+      context: {
+        queryDeduplication: false
+      }
+    }
+  )
+
+  useEffect(() => {
+    refetchNames()
+  }, [account, currentAddress, networkId])
+
+  const isAccountMatched =
+    account &&
+    currentAddress &&
+    account.toLowerCase() === currentAddress.toLowerCase()
+
+  if (domains) {
+    options = _.uniq(
+      domains
+        .map(domain => {
+          if (checkIsDecrypted(domain?.name)) {
+            return domain?.name
+          } else {
+            let decrypted = decryptName(domain?.name)
+            // Ignore if label is not found
+            if (checkIsDecrypted(decrypted)) {
+              return decrypted
+            } else {
+              return null
+            }
+          }
+        })
+        .filter(d => !!d)
+        .sort()
+    ).map(d => {
+      return { value: d, label: d }
+    })
+  }
+
+  function handleSelect(e) {
+    if (e && e.label) {
+      setNewName(e)
+    } else {
+      setNewName('')
+    }
+  }
+
+  function ReverseRecordEditor() {
+    return (
+      <>
+        <Message onClick={editing ? stopEditing : startEditing}>
+          {hasValidReverseRecord(getReverseRecord) ? (
+            <MessageContent data-testid="editable-reverse-record-set">
+              <Check />
+              <Stack direction="row" alignItems="center" spacing={2}>
+                <Typography className='subject-icon' component="img" src={subjectIcon} />
+                <Typography className='subject-text'>{t('singleName.record.messages.setTo').slice(0, t('singleName.record.messages.setTo').indexOf('('))}</Typography>
+                <Typography className='content-text'>{t('singleName.record.messages.setTo').slice(t('singleName.record.messages.setTo').indexOf('(')) + getReverseRecord.name}</Typography>
+              </Stack>
+            </MessageContent>
+          ) : (
+            <EditableNotSet data-testid="editable-reverse-record-not-set">
+              <Stack direction="row" alignItems="center" spacing={2}>
+                <Typography className='subject-icon' component="img" src={subjectIcon} />
+                <Typography className='subject-text'>{t('singleName.record.messages.notSet').slice(0, t('singleName.record.messages.notSet').indexOf('('))}</Typography>
+                <Typography className='content-text'>{t('singleName.record.messages.notSet').slice(t('singleName.record.messages.notSet').indexOf('('))}</Typography>
+              </Stack>
+            </EditableNotSet>
+          )}
+          {pending && !confirmed && txHash ? (
+            <PendingTx
+              txHash={txHash}
+              onConfirmed={() => {
+                setConfirmed()
+                refetch()
+              }}
+            />
+          ) : (
+            <RotatingSmallCaret
+              rotated={editing ? 1 : 0}
+              testid="open-reverse"
+            />
+          )}
+        </Message>
+        {editing && <Divider variant="fullWidth" sx={{ mt: "30px" }} />}
+        {editing && (
+          <SetReverseContainer>
+            <Explanation className='content-text'>
+              <Trans i18nKey="singleName.record.messages.explanation">
+                The Reverse Resolution translates an address into a name. It
+                allows Dapps to show in their interfaces '
+                {{
+                  name:
+                    (hasValidReverseRecord(getReverseRecord) &&
+                      getReverseRecord.name) ||
+                    'example.avax'
+                }}
+                ' rather than the long address '{{ account }}'. If you would
+                like to set up your reverse for a different account, please
+                switch accounts in your dapp browser.
+              </Trans>
+            </Explanation>
+            <Stack direction="row" alignItems="center" justifyContent="space-between" spacing={2} sx={{ mb: "20px" }}>
+              {options?.length > 0 ? (
+                <Select
+                  placeholder={t('singleName.record.messages.selectPlaceholder')}
+                  isClearable={true}
+                  value={newName}
+                  onChange={handleSelect}
+                  options={options}
+                />
+              ) : (
+                <Warning>
+                  {t('singleName.record.messages.noForwardRecordAavilable')}
+                </Warning>
+              )}
+              <ButtonsContainer>
+                <SaveCancel
+                  mutation={() => {
+                    setName({ variables: { name: newName?.value } })
+                  }}
+                  stopEditing={stopEditing}
+                  isValid={!!newName}
+                />
+                {hasValidReverseRecord(getReverseRecord) && (
+                  <>
+                    <Bin onClick={() => setIsDeleteModalOpen(true)} />
+                    {isDeleteModalOpen && (
+                      <Modal closeModal={() => setIsDeleteModalOpen(false)}>
+                        {t('singleName.record.messages.reverseRecordRemoval')}
+                        <Gap size={5} />
+                        <SaveCancel
+                          mutation={() => {
+                            setName({ variables: { name: emptyAddress } })
+                            setIsDeleteModalOpen(false)
+                          }}
+                          stopEditing={e => {
+                            stopEditing(e)
+                            setIsDeleteModalOpen(false)
+                          }}
+                          isValid
+                        />
+                      </Modal>
+                    )}
+                  </>
+                )}
+              </ButtonsContainer>
+            </Stack>
+            <Explanation className='content-text'>
+              <p>
+                <Trans i18nKey="singleName.record.messages.explanation2">
+                  You can only select names you set this Avalanche Address as.
+                </Trans>
+              </p>
+            </Explanation>
+          </SetReverseContainer>
+        )}
+      </>
+    )
+  }
+
+  return (
+    <Paper sx={{ borderRadius: "32px", p: "40px 50px" }}>
+      {loading ? (
+        <Loading>Loading reverse record...</Loading>
+      ) : (
+        <>
+          {isAccountMatched ? (
+            <ReverseRecordEditor />
+          ) : (
+            <ReadOnlyMessage>
+              {hasValidReverseRecord(getReverseRecord) ? (
+                <MessageContent data-testid="readonly-reverse-record-set">
+                  {t('singleName.record.messages.setTo') +
+                    getReverseRecord.name}
+                </MessageContent>
+              ) : (
+                <div data-testid="readonly-reverse-record-not-set">
+                  {t('singleName.record.messages.notSet')}
+                </div>
+              )}
+            </ReadOnlyMessage>
+          )}
+        </>
+      )}
+    </Paper>
+  )
+}
+
+export default AddReverseRecord
